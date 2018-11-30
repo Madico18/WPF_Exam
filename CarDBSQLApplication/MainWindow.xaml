@@ -1,0 +1,108 @@
+﻿<Window x:Class="CarDBSQLApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarDBSQLApplication"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="1000">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resource\Style.xaml"></ResourceDictionary>               
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.RowSpan="6" Grid.Column="0" Orientation="Vertical">
+            <Menu x:Name="MainMenu" HorizontalAlignment="Left" >
+                <MenuItem  Header="Главная">                  
+                    <MenuItem.Icon>
+                        <Image Source="Images/home.png"></Image>
+                    </MenuItem.Icon>                    
+                </MenuItem>               
+                <MenuItem Header="Отложенные работы">
+                    <MenuItem.Icon>
+                        <Image Source="Images/info.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>               
+                <MenuItem Header="Выполненные работы">
+                    <MenuItem.Icon>
+                        <Image Source="Images/wrench.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>              
+                <MenuItem Header="Агрегат">
+                    <MenuItem.Icon>
+                        <Image Source="Images/wheel.jpg"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>             
+                <MenuItem Header="Моточасы">
+                    <MenuItem.Icon>
+                        <Image Source="Images/watch.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>             
+                <MenuItem Header="Расходные материалы">
+                    <MenuItem.Icon>
+                        <Image Source="Images/drop.jpg"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>             
+                <MenuItem Header="Планирование">
+                    <MenuItem.Icon>
+                        <Image Source="Images/calendar.jpg"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>            
+                <MenuItem Header="Проект">
+                    <MenuItem.Icon>
+                        <Image Source="Images/earth.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>            
+                <MenuItem Header="Список машины">
+                    <MenuItem.Icon>
+                        <Image Source="Images/truck.jpg"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>              
+                <MenuItem Header="Справочники">
+                    <MenuItem.Icon>
+                        <Image Source="Images/monitoring1.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>              
+                <MenuItem Header="Доступы">
+                    <MenuItem.Icon>
+                        <Image Source="Images/users.jpg"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>              
+                <MenuItem Header="Checklist">
+                    <MenuItem.Icon>
+                        <Image Source="Images/checklist.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>               
+                <MenuItem Header="Отчеты">
+                    <MenuItem.Icon>
+                        <Image Source="Images/file.jpg"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+        <WrapPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="Black" HorizontalAlignment="Right">
+            <TextBlock Text="Варваринское" Padding="5" Foreground="White" Background="Black" TextAlignment="Right"></TextBlock>
+            <ComboBox Margin="10 5 10 5" BorderThickness="0" Background="Transparent">
+                <ComboBoxItem Content="Русский" IsSelected="True" Background="Black" BorderThickness="0" HorizontalContentAlignment="Right" Foreground="White"></ComboBoxItem>
+                <ComboBoxItem Content="Английский" Background="Black" Foreground="White"></ComboBoxItem>
+            </ComboBox>
+        </WrapPanel>
+        <Frame Grid.Row="1" Grid.RowSpan="6" Grid.Column="1" x:Name="MainFrame" Source ="Pages/MainPage.xaml"></Frame>
+    </Grid>
+</Window>

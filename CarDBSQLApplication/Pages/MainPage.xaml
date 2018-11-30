@@ -1,0 +1,87 @@
+﻿<Page x:Class="CarDBSQLApplication.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CarDBSQLApplication.Pages"
+      mc:Ignorable="d" 
+    
+      Title="MainPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Resource\Style.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="0" Background="White">
+            <Image Source="../Images/logo.png"></Image>
+        </WrapPanel>        
+        <TextBox Grid.Row="1" Text="Главная" Background="LightGray"></TextBox>
+        <WrapPanel Grid.Row="2" Background="#b8e8c3">
+            <Button Background="Green" Content="+ Добавить машину" Padding="3" Margin="15 7 7 7" Click="Button_Click"></Button>
+        </WrapPanel>
+        <ScrollViewer Grid.Row="3">
+            <Grid Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="280" />
+                                  
+                </Grid.RowDefinitions>
+
+                <DataGrid AutoGenerateColumns="False" 
+                        x:Name="equipGrid" 
+                        ItemsSource="{Binding}" 
+                        Grid.Row="0" Grid.RowSpan="2" 
+                        ScrollViewer.CanContentScroll="True"      
+                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+
+                    <DataGrid.Columns>
+                        <DataGridHyperlinkColumn Binding="{Binding Path=intGarageRoom}" Width="120" x:Name="GarLink">
+                            <DataGridHyperlinkColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <EventSetter Event="Hyperlink.Click" Handler="onHyperlinkClick"></EventSetter>
+                                </Style>
+                            </DataGridHyperlinkColumn.ElementStyle>
+                            <DataGridHyperlinkColumn.Header>
+                                <Label Content="Гаражный &#13; номер" TextBlock.TextAlignment="Center" Padding="3" />
+                            </DataGridHyperlinkColumn.Header>                           
+                        </DataGridHyperlinkColumn>
+                        <DataGridTextColumn Binding="{Binding Path=strName}" Header="Производитель" Width="120"/>
+                        <DataGridTextColumn Binding="{Binding Path=strModelName}" Header="Модель" Width="120"/>
+                        <DataGridTextColumn Binding="{Binding Path=strManufYear}" Width="120">
+                            <DataGridTextColumn.Header>
+                                <Label Content="Год &#13; выпуска" TextBlock.TextAlignment="Center" Padding="3" />
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Path=strSerialNo}" Width="120">
+                            <DataGridTextColumn.Header>
+                                <Label Content="Серийный &#13; номер" TextBlock.TextAlignment="Center" Padding="0" />
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Path=intHoursHoursOperation}" Width="140">
+                            <DataGridTextColumn.Header>
+                                <Label Content="Последние &#13; мото-часы" TextBlock.TextAlignment="Center" Padding="0" />
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Path=intMeterReading}" Width="140">
+                            <DataGridTextColumn.Header>
+                                <Label Content="Общая &#13; наработка машины" TextBlock.TextAlignment="Center" Padding="0" />
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </ScrollViewer>        
+    </Grid>
+</Page>
